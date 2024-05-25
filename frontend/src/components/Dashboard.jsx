@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
+import { BASE_URL } from "../components/api";
 
 const Dashboard = () => {
-  const BASE_URL = 'https://invoice-384t.onrender.com'; 
   const [totalInvoices, setTotalInvoices] = useState(0);
   const [totalCustomers, setTotalCustomers] = useState(0);
 
