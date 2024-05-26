@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import InvoicePreview from './InvoicePreview';
+import { BASE_URL } from "../components/api";
 
 const InvoiceDetail = () => {
   const { id } = useParams();
   const [invoice, setInvoice] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/invoices/${id}`)
+    axios.get(`${BASE_URL}/invoices/${id}`)
       .then(response => {
         setInvoice(response.data);
       })

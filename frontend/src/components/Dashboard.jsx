@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
+import { BASE_URL } from "../components/api";
 
 const Dashboard = () => {
   const [totalInvoices, setTotalInvoices] = useState(0);
   const [totalCustomers, setTotalCustomers] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/invoices/count/total')
+    axios.get(`${BASE_URL}/invoices/count/total`)
       .then(response => {
-        console.log(response)
+        // console.log(response)
         setTotalInvoices(parseInt(response.data.count));
         setTotalCustomers(parseInt(response.data.count));
 
@@ -18,13 +19,13 @@ const Dashboard = () => {
         console.error('Error fetching total invoices count:', error.response);
       });
   
-    axios.get('/api/customers/count')
-      .then(response => {
-        setTotalCustomers(response.data.totalCustomers);
-      })
-      .catch(error => {
-        console.error('Error fetching total customers count:', error.response);
-      });
+    // axios.get('/api/customers/count')
+    //   .then(response => {
+    //     setTotalCustomers(response.data.totalCustomers);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching total customers count:', error.response);
+    //   });
   }, []);  
 
   return (
